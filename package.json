@@ -1,46 +1,23 @@
 {
-  "name": "bookmysaloon-frontend",
+  "name": "nearsalon",
   "version": "1.0.0",
-  "description": "BookMySaloon frontend application",
-  "private": true,
-  "dependencies": {
-    "axios": "^1.6.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1",
-    "react-scripts": "5.0.1"
-  },
+  "description": "Production-grade salon booking platform",
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "test:watch": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{js,jsx}",
-    "lint:fix": "eslint src/**/*.{js,jsx} --fix"
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
+    "lint": "cd backend && npm run lint && cd ../frontend && npm run lint",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "keywords": ["salon", "booking", "location-based"],
+  "author": "NearSalon Team",
+  "license": "MIT",
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.1.5",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "eslint": "^8.56.0"
+    "concurrently": "^8.2.2"
   }
 }
